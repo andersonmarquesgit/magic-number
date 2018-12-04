@@ -1,0 +1,8 @@
+bin/.project
+.settings/org.eclipse.m2e.core.prefs
+.settings/org.eclipse.core.resources.prefs
+.project
+.settings/org.eclipse.jdt.core.prefs
+target/classes/com/magic/CalcMagicNumber.class
+target/classes/com/magic/Main.class
+.classpath
