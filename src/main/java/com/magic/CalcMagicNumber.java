@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.magic.exception.BusinessException;
+
 /**
  * @author Anderson Marques
  *
@@ -29,14 +31,22 @@ public class CalcMagicNumber {
 		return range;
 	}
 
-	public static void calcPrimeNumbers(int[] range) {
+	public static int calcPrimeNumbers(int[] range) throws BusinessException {
 		int max = 0;
 		int qttMagicNumber = 0;
 		int ini = 0;
 		
+		if(range.length <= 1) {
+			throw new BusinessException("A lista não contem dois números!");
+		}
+		
 		while(ini < range.length) {
 			int start = range[ini];
 			int finish = range[max+1];
+			
+			if(start > finish) {
+				throw new BusinessException("Número inicial maior que número final!");
+			}
 			
 			while (start <= finish) {
 				if(isPrime(Math.sqrt(start))) {
@@ -49,6 +59,7 @@ public class CalcMagicNumber {
 		}
 		
 		System.out.println("Quantidade de números mágicos: " + qttMagicNumber);
+		return qttMagicNumber;
 	}
 	
 	public static boolean isPrime(double raiz) {
